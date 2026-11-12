@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  id-token: write
 
 concurrency:
   group: blogspot-monitor
@@ -24,6 +25,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+
+      - name: Authenticate to Google Cloud (Workload Identity Federation)
+        id: google-auth
+        uses: google-github-actions/auth@v3
+        with:
+          project_id: ahlicuan99-dashboard
+          workload_identity_provider: projects/441269398422/locations/global/workloadIdentityPools/github-pool/providers/github-provider
+          service_account: ahlicuan99-dashboard@ahlicuan99-dashboard.iam.gserviceaccount.com
+          create_credentials_file: true
 
       - name: Install dependencies
         run: npm install
@@ -47,6 +57,14 @@ jobs:
           TARGET_URL: https://ahlicuan99.blogspot.com/
           SEO_MAX_PAGES: "20"
 
+      - name: Collect Google Analytics and Search Console data
+        id: google-data
+        continue-on-error: true
+        run: node google-data.js
+        env:
+          GA4_PROPERTY_ID: ${{ vars.GA4_PROPERTY_ID }}
+          SEARCH_CONSOLE_SITE_URL: https://ahlicuan99.blogspot.com/
+
       - name: Save dashboard data
         if: always()
         run: |
@@ -54,6 +72,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/status.json docs/history.json
           if [ -f docs/seo.json ]; then git add docs/seo.json; fi
+          if [ -f docs/google-data.json ]; then git add docs/google-data.json; fi
           if git diff --cached --quiet; then
             echo "No dashboard changes to save"
           else
