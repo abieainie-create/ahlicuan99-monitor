@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AhliCuan99 — Website Monitor</title>
+<style>
+:root{color-scheme:light dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+body{max-width:980px;margin:40px auto;padding:0 18px;line-height:1.5}
+header,.card{border:1px solid #8885;border-radius:14px;padding:20px;margin:16px 0}
+.muted{opacity:.7}.status{font-weight:700;font-size:1.35rem}
+.good{color:#16a34a}.bad{color:#dc2626}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.metric{background:#8881;border-radius:10px;padding:14px}
+.metric strong{display:block;font-size:1.6rem}
+table{width:100%;border-collapse:collapse;overflow-wrap:anywhere}
+td,th{text-align:left;padding:10px;border-bottom:1px solid #8885}
+a{color:inherit}
+</style>
+</head>
+<body>
+<header>
+<h1>AhliCuan99 Website Monitor</h1>
+<p class="muted">Pemantauan ketersediaan halaman dan tautan internal Blogspot.</p>
+<p>Website: <a href="https://ahlicuan99.blogspot.com/">ahlicuan99.blogspot.com</a></p>
+<div id="status" class="status">Memuat hasil pemeriksaan…</div>
+<p id="time" class="muted"></p>
+</header>
+<section class="grid">
+<div class="metric"><span class="muted">Halaman diperiksa</span><strong id="total">—</strong></div>
+<div class="metric"><span class="muted">Berhasil</span><strong id="ok">—</strong></div>
+<div class="metric"><span class="muted">Error</span><strong id="fail">—</strong></div>
+</section>
+<section class="card">
+<h2>Detail halaman terbaru</h2>
+<table><thead><tr><th>URL</th><th>HTTP</th><th>Status</th></tr></thead><tbody id="pages"><tr><td colspan="3">Belum ada data.</td></tr></tbody></table>
+</section>
+<section class="card">
+<h2>Riwayat pemeriksaan</h2>
+<table><thead><tr><th>Waktu</th><th>Status</th><th>Diperiksa</th><th>Error</th></tr></thead><tbody id="history"></tbody></table>
+</section>
+<p class="muted">Pembaruan mengikuti jadwal GitHub Actions setiap jam. Data diperbarui setelah workflow selesai.</p>
+<script>
+async function load(){
+  try{
+    const [s,h]=await Promise.all([
+      fetch('./status.json?'+Date.now()).then(r=>{if(!r.ok)throw Error('Belum ada hasil');return r.json()}),
+      fetch('./history.json?'+Date.now()).then(r=>r.ok?r.json():[])
+    ]);
+    const status=document.getElementById('status');
+    status.textContent=s.status==='UP'?'● WEBSITE NORMAL':'● PERLU DIPERIKSA';
+    status.className='status '+(s.status==='UP'?'good':'bad');
+    document.getElementById('time').textContent='Pemeriksaan: '+new Date(s.checkedAt).toLocaleString('id-ID',{timeZone:'Asia/Jakarta'})+' WIB';
+    document.getElementById('total').textContent=s.total;
+    document.getElementById('ok').textContent=s.successful;
+    document.getElementById('fail').textContent=s.failures;
+    document.getElementById('pages').innerHTML=s.pages.map(p=>'<tr><td><a href="'+p.url+'" target="_blank" rel="noopener">'+p.url+'</a></td><td>'+(p.status??'—')+'</td><td class="'+(p.ok?'good':'bad')+'">'+(p.ok?'OK':'ERROR')+(p.error?' — '+p.error:'')+'</td></tr>').join('');
+    document.getElementById('history').innerHTML=h.map(x=>'<tr><td>'+new Date(x.checkedAt).toLocaleString('id-ID',{timeZone:'Asia/Jakarta'})+'</td><td class="'+(x.status==='UP'?'good':'bad')+'">'+x.status+'</td><td>'+x.total+'</td><td>'+x.failures+'</td></tr>').join('');
+  }catch(e){document.getElementById('status').textContent='Menunggu pemeriksaan pertama';document.getElementById('time').textContent=e.message}
+}
+load();
+</script>
+</body></html>
