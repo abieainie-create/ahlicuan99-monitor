@@ -36,6 +36,19 @@ a{color:inherit}
 <table><thead><tr><th>URL</th><th>HTTP</th><th>Status</th></tr></thead><tbody id="pages"><tr><td colspan="3">Belum ada data.</td></tr></tbody></table>
 </section>
 <section class="card">
+<h2>Audit SEO teknis</h2>
+<p id="seo-time" class="muted">Menunggu audit SEO pertama…</p>
+<div class="grid">
+<div class="metric"><span class="muted">Halaman diaudit</span><strong id="seo-total">—</strong></div>
+<div class="metric"><span class="muted">Halaman perlu perbaikan</span><strong id="seo-problems">—</strong></div>
+<div class="metric"><span class="muted">Temuan SEO</span><strong id="seo-issues">—</strong></div>
+</div>
+<h3>File teknis</h3>
+<div id="seo-tech" class="muted">Memuat…</div>
+<h3>Temuan per halaman</h3>
+<table><thead><tr><th>Halaman</th><th>Temuan</th></tr></thead><tbody id="seo-pages"><tr><td colspan="2">Belum ada data.</td></tr></tbody></table>
+</section>
+<section class="card">
 <h2>Riwayat pemeriksaan</h2>
 <table><thead><tr><th>Waktu</th><th>Status</th><th>Diperiksa</th><th>Error</th></tr></thead><tbody id="history"></tbody></table>
 </section>
@@ -43,9 +56,10 @@ a{color:inherit}
 <script>
 async function load(){
   try{
-    const [s,h]=await Promise.all([
+    const [s,h,seo]=await Promise.all([
       fetch('./status.json?'+Date.now()).then(r=>{if(!r.ok)throw Error('Belum ada hasil');return r.json()}),
-      fetch('./history.json?'+Date.now()).then(r=>r.ok?r.json():[])
+      fetch('./history.json?'+Date.now()).then(r=>r.ok?r.json():[]),
+      fetch('./seo.json?'+Date.now()).then(r=>r.ok?r.json():null)
     ]);
     const status=document.getElementById('status');
     status.textContent=s.status==='UP'?'● WEBSITE NORMAL':'● PERLU DIPERIKSA';
@@ -56,6 +70,14 @@ async function load(){
     document.getElementById('fail').textContent=s.failures;
     document.getElementById('pages').innerHTML=s.pages.map(p=>'<tr><td><a href="'+p.url+'" target="_blank" rel="noopener">'+p.url+'</a></td><td>'+(p.status??'—')+'</td><td class="'+(p.ok?'good':'bad')+'">'+(p.ok?'OK':'ERROR')+(p.error?' — '+p.error:'')+'</td></tr>').join('');
     document.getElementById('history').innerHTML=h.map(x=>'<tr><td>'+new Date(x.checkedAt).toLocaleString('id-ID',{timeZone:'Asia/Jakarta'})+'</td><td class="'+(x.status==='UP'?'good':'bad')+'">'+x.status+'</td><td>'+x.total+'</td><td>'+x.failures+'</td></tr>').join('');
+    if(seo){
+      document.getElementById('seo-time').textContent='Audit: '+new Date(seo.checkedAt).toLocaleString('id-ID',{timeZone:'Asia/Jakarta'})+' WIB';
+      document.getElementById('seo-total').textContent=seo.totalPages;
+      document.getElementById('seo-problems').textContent=seo.pagesWithIssues;
+      document.getElementById('seo-issues').textContent=seo.totalIssues;
+      document.getElementById('seo-tech').textContent=Object.entries(seo.technical||{}).map(([k,v])=>k+': '+(v.ok?'OK':'Periksa')+(v.status?' (HTTP '+v.status+')':'')).join(' | ')||'Tidak ada data teknis';
+      document.getElementById('seo-pages').innerHTML=seo.pages.map(p=>'<tr><td><a href="'+p.url+'" target="_blank" rel="noopener">'+p.url+'</a></td><td class="'+(p.issues.length?'bad':'good')+'">'+(p.issues.length?p.issues.join('; '):'Tidak ada temuan otomatis')+'</td></tr>').join('');
+    }
   }catch(e){document.getElementById('status').textContent='Menunggu pemeriksaan pertama';document.getElementById('time').textContent=e.message}
 }
 load();
