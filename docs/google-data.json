@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-11-12T19:39:11.795Z",
+  "siteUrl": "https://ahlicuan99.blogspot.com/",
+  "analytics": {
+    "configured": true,
+    "ok": true,
+    "period": "28 hari terakhir hingga kemarin",
+    "activeUsers": 0,
+    "sessions": 0,
+    "pageViews": 0
+  },
+  "searchConsole": {
+    "configured": true,
+    "ok": true,
+    "period": "28 hari terakhir, data sampai 3 hari lalu",
+    "clicks": 0,
+    "impressions": 0,
+    "ctr": 0,
+    "averagePosition": 0
+  }
+}
