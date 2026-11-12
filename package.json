@@ -8,6 +8,8 @@
     "seo-audit": "node seo-audit.js"
   },
   "dependencies": {
-    "playwright": "^1.56.1"
+    "playwright": "^1.56.1",
+    "@google-analytics/data": "^5.2.0",
+    "googleapis": "^144.0.0"
   }
 }
