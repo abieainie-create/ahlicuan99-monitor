@@ -1,15 +1,35 @@
 {
-  "checkedAt": "2026-11-12T19:39:06.540Z",
+  "checkedAt": "2026-11-12T19:40:45.850Z",
   "target": "https://ahlicuan99.blogspot.com/",
-  "total": 1,
-  "successful": 0,
-  "failures": 1,
-  "status": "ISSUES",
+  "total": 5,
+  "successful": 5,
+  "failures": 0,
+  "status": "UP",
   "pages": [
     {
-      "url": "https://www.google.com/sorry/index?continue=https://ahlicuan99.blogspot.com/&q=EgSeF75hGNur2NcGIi35PKncWzgxs4uLy66jMrWExiSsOvSj-OJcQsBmgu4UNAuUiUpNo7bm-rOCz-cyAnJSWgFDYO-I2YHj7pbi-QE",
-      "status": 429,
-      "ok": false
+      "url": "https://ahlicuan99.blogspot.com/",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://ahlicuan99.blogspot.com/2026/11/7-cara-menghasilkan-uang-dari-internet.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://ahlicuan99.blogspot.com/",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://ahlicuan99.blogspot.com/feeds/posts/default",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://ahlicuan99.blogspot.com/2026/11/",
+      "status": 200,
+      "ok": true
     }
   ]
 }
