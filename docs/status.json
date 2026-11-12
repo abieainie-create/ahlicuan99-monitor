@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-11-12T17:35:11.844Z",
+  "target": "https://ahlicuan99.blogspot.com/",
+  "total": 5,
+  "successful": 5,
+  "failures": 0,
+  "status": "UP",
+  "pages": [
+    {
+      "url": "https://ahlicuan99.blogspot.com/",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://ahlicuan99.blogspot.com/2026/11/7-cara-menghasilkan-uang-dari-internet.html",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://ahlicuan99.blogspot.com/",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://ahlicuan99.blogspot.com/feeds/posts/default",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "url": "https://ahlicuan99.blogspot.com/2026/11/",
+      "status": 200,
+      "ok": true
+    }
+  ]
+}
