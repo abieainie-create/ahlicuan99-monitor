@@ -52,7 +52,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/status.json docs/history.json docs/seo.json
+          git add docs/status.json docs/history.json
+          if [ -f docs/seo.json ]; then git add docs/seo.json; fi
           if git diff --cached --quiet; then
             echo "No dashboard changes to save"
           else
