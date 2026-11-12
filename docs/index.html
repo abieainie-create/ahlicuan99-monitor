@@ -56,10 +56,10 @@ a{color:inherit}
 <script>
 async function load(){
   try{
-    const [s,h,seo]=await Promise.all([
+    const [s,h,seo,gdata]=await Promise.all([
       fetch('./status.json?'+Date.now()).then(r=>{if(!r.ok)throw Error('Belum ada hasil');return r.json()}),
       fetch('./history.json?'+Date.now()).then(r=>r.ok?r.json():[]),
-      fetch('./seo.json?'+Date.now()).then(r=>r.ok?r.json():null)
+      fetch('./seo.json?'+Date.now()).then(r=>r.ok?r.json():null),\n      fetch('./google-data.json?'+Date.now()).then(r=>r.ok?r.json():null)
     ]);
     const status=document.getElementById('status');
     status.textContent=s.status==='UP'?'● WEBSITE NORMAL':'● PERLU DIPERIKSA';
@@ -70,6 +70,27 @@ async function load(){
     document.getElementById('fail').textContent=s.failures;
     document.getElementById('pages').innerHTML=s.pages.map(p=>'<tr><td><a href="'+p.url+'" target="_blank" rel="noopener">'+p.url+'</a></td><td>'+(p.status??'—')+'</td><td class="'+(p.ok?'good':'bad')+'">'+(p.ok?'OK':'ERROR')+(p.error?' — '+p.error:'')+'</td></tr>').join('');
     document.getElementById('history').innerHTML=h.map(x=>'<tr><td>'+new Date(x.checkedAt).toLocaleString('id-ID',{timeZone:'Asia/Jakarta'})+'</td><td class="'+(x.status==='UP'?'good':'bad')+'">'+x.status+'</td><td>'+x.total+'</td><td>'+x.failures+'</td></tr>').join('');
+    if(gdata){
+      document.getElementById('google-time').textContent='Data Google: '+new Date(gdata.checkedAt).toLocaleString('id-ID',{timeZone:'Asia/Jakarta'})+' WIB';
+      if(gdata.analytics?.ok){
+        document.getElementById('ga-users').textContent=gdata.analytics.activeUsers.toLocaleString('id-ID');
+        document.getElementById('ga-sessions').textContent=gdata.analytics.sessions.toLocaleString('id-ID');
+        document.getElementById('ga-views').textContent=gdata.analytics.pageViews.toLocaleString('id-ID');
+      } else {
+        document.getElementById('ga-users').textContent='—';
+        document.getElementById('ga-sessions').textContent='—';
+        document.getElementById('ga-views').textContent='—';
+      }
+      if(gdata.searchConsole?.ok){
+        document.getElementById('sc-clicks').textContent=gdata.searchConsole.clicks.toLocaleString('id-ID');
+        document.getElementById('sc-impressions').textContent=gdata.searchConsole.impressions.toLocaleString('id-ID');
+        document.getElementById('sc-ctr').textContent=(gdata.searchConsole.ctr*100).toFixed(2)+'%';
+      }
+      const notes=[];
+      if(!gdata.analytics?.ok) notes.push('GA4: '+(gdata.analytics?.message||gdata.analytics?.error||'belum tersedia'));
+      if(!gdata.searchConsole?.ok) notes.push('Search Console: '+(gdata.searchConsole?.error||'belum tersedia'));
+      document.getElementById('google-note').textContent=notes.join(' | ');
+    }
     if(seo){
       document.getElementById('seo-time').textContent='Audit: '+new Date(seo.checkedAt).toLocaleString('id-ID',{timeZone:'Asia/Jakarta'})+' WIB';
       document.getElementById('seo-total').textContent=seo.totalPages;
