@@ -1,14 +1,14 @@
 {
-  "checkedAt": "2026-11-13T12:59:12.684Z",
+  "checkedAt": "2026-11-13T13:33:59.826Z",
   "target": "https://ahlicuan99.blogspot.com/",
   "totalPages": 4,
   "pagesWithIssues": 4,
-  "totalIssues": 10,
+  "totalIssues": 12,
   "technical": {
     "robotsTxt": {
       "url": "https://ahlicuan99.blogspot.com/robots.txt",
-      "status": 200,
-      "ok": true
+      "status": 404,
+      "ok": false
     },
     "sitemapXml": {
       "url": "https://ahlicuan99.blogspot.com/sitemap.xml",
@@ -69,17 +69,19 @@
     },
     {
       "url": "https://ahlicuan99.blogspot.com/2026/11/",
-      "httpStatus": 200,
-      "title": "ahlicuan: November 2026",
+      "httpStatus": 429,
+      "title": "https://ahlicuan99.blogspot.com/2026/11/",
       "description": "",
-      "canonical": "https://ahlicuan99.blogspot.com/2026/11/",
-      "h1Count": 1,
-      "images": 6,
-      "imagesMissingAlt": 4,
+      "canonical": "",
+      "h1Count": 0,
+      "images": 0,
+      "imagesMissingAlt": 0,
       "robots": "",
       "issues": [
+        "Halaman tidak merespons normal",
         "Meta description belum ada",
-        "4 gambar belum memiliki teks ALT"
+        "Canonical URL belum ditemukan",
+        "Tidak ditemukan heading H1"
       ],
       "ok": false
     }
