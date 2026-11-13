@@ -1,13 +1,10 @@
 {
-  "checkedAt": "2026-11-13T14:00:42.634Z",
+  "checkedAt": "2026-11-13T14:47:59.180Z",
   "siteUrl": "https://ahlicuan99.blogspot.com/",
   "analytics": {
     "configured": true,
-    "ok": true,
-    "period": "28 hari terakhir hingga kemarin",
-    "activeUsers": 0,
-    "sessions": 0,
-    "pageViews": 0
+    "ok": false,
+    "error": "14 UNAVAILABLE: 502:Bad Gateway"
   },
   "searchConsole": {
     "configured": true,
