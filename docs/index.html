@@ -3,104 +3,139 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AhliCuan99 — Website Monitor</title>
+<title>AhliCuan99 — Dashboard Monitor</title>
 <style>
-:root{color-scheme:light dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
-body{max-width:980px;margin:40px auto;padding:0 18px;line-height:1.5}
-header,.card{border:1px solid #8885;border-radius:14px;padding:20px;margin:16px 0}
-.muted{opacity:.7}.status{font-weight:700;font-size:1.35rem}
-.good{color:#16a34a}.bad{color:#dc2626}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
-.metric{background:#8881;border-radius:10px;padding:14px}
-.metric strong{display:block;font-size:1.6rem}
-table{width:100%;border-collapse:collapse;overflow-wrap:anywhere}
-td,th{text-align:left;padding:10px;border-bottom:1px solid #8885}
-a{color:inherit}
+:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#172033;background:#f4f6fb}
+*{box-sizing:border-box}body{max-width:1100px;margin:28px auto;padding:0 16px;line-height:1.5}
+header,.card{background:#fff;border:1px solid #e3e8f0;border-radius:16px;padding:20px;margin:16px 0;box-shadow:0 4px 16px #1720330a}
+h1{margin:0 0 6px}h2{font-size:1.15rem;margin:0 0 14px}.muted{color:#667085}.status{font-size:1.25rem;font-weight:750;margin-top:12px}
+.good{color:#15803d}.bad{color:#b91c1c}.warn{color:#a16207}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}
+.metric{background:#f7f9fc;border:1px solid #e8edf4;border-radius:12px;padding:14px;min-width:0}
+.metric span{display:block;color:#667085;font-size:.9rem}.metric strong{display:block;font-size:1.55rem;margin-top:4px;overflow-wrap:anywhere}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid #edf0f5;overflow-wrap:anywhere;font-size:.92rem}
+a{color:#2457c5} .scroll{overflow-x:auto}.note{padding:10px 12px;background:#fff8e8;border-radius:10px;color:#854d0e;margin-top:12px}
+@media(max-width:600px){body{margin:12px auto}.card,header{padding:15px}th,td{font-size:.82rem}}
 </style>
 </head>
 <body>
 <header>
-<h1>AhliCuan99 Website Monitor</h1>
-<p class="muted">Pemantauan ketersediaan halaman dan tautan internal Blogspot.</p>
-<p>Website: <a href="https://ahlicuan99.blogspot.com/">ahlicuan99.blogspot.com</a></p>
-<div id="status" class="status">Memuat hasil pemeriksaan…</div>
-<p id="time" class="muted"></p>
+<h1>AhliCuan99 Monitor</h1>
+<p class="muted">Pemantauan website, SEO, Google Analytics, dan Search Console.</p>
+<p>Website: <a href="https://ahlicuan99.blogspot.com/" target="_blank" rel="noopener">ahlicuan99.blogspot.com</a></p>
+<div id="status" class="status">Memuat status website…</div>
+<p id="time" class="muted">Menunggu data terbaru…</p>
 </header>
-<section class="grid">
-<div class="metric"><span class="muted">Halaman diperiksa</span><strong id="total">—</strong></div>
-<div class="metric"><span class="muted">Berhasil</span><strong id="ok">—</strong></div>
-<div class="metric"><span class="muted">Error</span><strong id="fail">—</strong></div>
-</section>
+
 <section class="card">
-<h2>Detail halaman terbaru</h2>
-<table><thead><tr><th>URL</th><th>HTTP</th><th>Status</th></tr></thead><tbody id="pages"><tr><td colspan="3">Belum ada data.</td></tr></tbody></table>
+<h2>Kesehatan website</h2>
+<div class="grid">
+<div class="metric"><span>Halaman diperiksa</span><strong id="total">—</strong></div>
+<div class="metric"><span>Berhasil</span><strong id="ok">—</strong></div>
+<div class="metric"><span>Gagal</span><strong id="fail">—</strong></div>
+</div>
+<div class="scroll"><table><thead><tr><th>Halaman</th><th>HTTP</th><th>Hasil</th></tr></thead><tbody id="pages"><tr><td colspan="3">Memuat…</td></tr></tbody></table></div>
 </section>
+
+<section class="card">
+<h2>Google Analytics 4</h2>
+<p id="google-time" class="muted">Memuat data Google…</p>
+<div class="grid">
+<div class="metric"><span>Pengguna aktif</span><strong id="ga-users">—</strong></div>
+<div class="metric"><span>Sesi</span><strong id="ga-sessions">—</strong></div>
+<div class="metric"><span>Tampilan halaman</span><strong id="ga-views">—</strong></div>
+</div>
+<p id="ga-note" class="note" hidden></p>
+</section>
+
+<section class="card">
+<h2>Google Search Console</h2>
+<div class="grid">
+<div class="metric"><span>Total klik</span><strong id="sc-clicks">—</strong></div>
+<div class="metric"><span>Impresi</span><strong id="sc-impressions">—</strong></div>
+<div class="metric"><span>CTR</span><strong id="sc-ctr">—</strong></div>
+<div class="metric"><span>Posisi rata-rata</span><strong id="sc-position">—</strong></div>
+</div>
+<p id="sc-note" class="muted"></p>
+</section>
+
 <section class="card">
 <h2>Audit SEO teknis</h2>
-<p id="seo-time" class="muted">Menunggu audit SEO pertama…</p>
+<p id="seo-time" class="muted">Memuat audit…</p>
 <div class="grid">
-<div class="metric"><span class="muted">Halaman diaudit</span><strong id="seo-total">—</strong></div>
-<div class="metric"><span class="muted">Halaman perlu perbaikan</span><strong id="seo-problems">—</strong></div>
-<div class="metric"><span class="muted">Temuan SEO</span><strong id="seo-issues">—</strong></div>
+<div class="metric"><span>Halaman diaudit</span><strong id="seo-total">—</strong></div>
+<div class="metric"><span>Halaman bermasalah</span><strong id="seo-problems">—</strong></div>
+<div class="metric"><span>Total temuan</span><strong id="seo-issues">—</strong></div>
 </div>
-<h3>File teknis</h3>
-<div id="seo-tech" class="muted">Memuat…</div>
-<h3>Temuan per halaman</h3>
-<table><thead><tr><th>Halaman</th><th>Temuan</th></tr></thead><tbody id="seo-pages"><tr><td colspan="2">Belum ada data.</td></tr></tbody></table>
+<p id="seo-tech" class="muted"></p>
+<div class="scroll"><table><thead><tr><th>Halaman</th><th>Temuan</th></tr></thead><tbody id="seo-pages"><tr><td colspan="2">Memuat…</td></tr></tbody></table></div>
 </section>
+
 <section class="card">
 <h2>Riwayat pemeriksaan</h2>
-<table><thead><tr><th>Waktu</th><th>Status</th><th>Diperiksa</th><th>Error</th></tr></thead><tbody id="history"></tbody></table>
+<div class="scroll"><table><thead><tr><th>Waktu</th><th>Status</th><th>Diperiksa</th><th>Gagal</th></tr></thead><tbody id="history"><tr><td colspan="4">Memuat…</td></tr></tbody></table></div>
 </section>
-<p class="muted">Pembaruan mengikuti jadwal GitHub Actions setiap jam. Data diperbarui setelah workflow selesai.</p>
+<p class="muted">Pembaruan otomatis mengikuti jadwal GitHub Actions. Data ditampilkan setelah proses pemeriksaan selesai.</p>
+
 <script>
-async function load(){
-  try{
-    const [s,h,seo,gdata]=await Promise.all([
-      fetch('./status.json?'+Date.now()).then(r=>{if(!r.ok)throw Error('Belum ada hasil');return r.json()}),
-      fetch('./history.json?'+Date.now()).then(r=>r.ok?r.json():[]),
-      fetch('./seo.json?'+Date.now()).then(r=>r.ok?r.json():null),\n      fetch('./google-data.json?'+Date.now()).then(r=>r.ok?r.json():null)
-    ]);
-    const status=document.getElementById('status');
-    status.textContent=s.status==='UP'?'● WEBSITE NORMAL':'● PERLU DIPERIKSA';
-    status.className='status '+(s.status==='UP'?'good':'bad');
-    document.getElementById('time').textContent='Pemeriksaan: '+new Date(s.checkedAt).toLocaleString('id-ID',{timeZone:'Asia/Jakarta'})+' WIB';
-    document.getElementById('total').textContent=s.total;
-    document.getElementById('ok').textContent=s.successful;
-    document.getElementById('fail').textContent=s.failures;
-    document.getElementById('pages').innerHTML=s.pages.map(p=>'<tr><td><a href="'+p.url+'" target="_blank" rel="noopener">'+p.url+'</a></td><td>'+(p.status??'—')+'</td><td class="'+(p.ok?'good':'bad')+'">'+(p.ok?'OK':'ERROR')+(p.error?' — '+p.error:'')+'</td></tr>').join('');
-    document.getElementById('history').innerHTML=h.map(x=>'<tr><td>'+new Date(x.checkedAt).toLocaleString('id-ID',{timeZone:'Asia/Jakarta'})+'</td><td class="'+(x.status==='UP'?'good':'bad')+'">'+x.status+'</td><td>'+x.total+'</td><td>'+x.failures+'</td></tr>').join('');
-    if(gdata){
-      document.getElementById('google-time').textContent='Data Google: '+new Date(gdata.checkedAt).toLocaleString('id-ID',{timeZone:'Asia/Jakarta'})+' WIB';
-      if(gdata.analytics?.ok){
-        document.getElementById('ga-users').textContent=gdata.analytics.activeUsers.toLocaleString('id-ID');
-        document.getElementById('ga-sessions').textContent=gdata.analytics.sessions.toLocaleString('id-ID');
-        document.getElementById('ga-views').textContent=gdata.analytics.pageViews.toLocaleString('id-ID');
-      } else {
-        document.getElementById('ga-users').textContent='—';
-        document.getElementById('ga-sessions').textContent='—';
-        document.getElementById('ga-views').textContent='—';
-      }
-      if(gdata.searchConsole?.ok){
-        document.getElementById('sc-clicks').textContent=gdata.searchConsole.clicks.toLocaleString('id-ID');
-        document.getElementById('sc-impressions').textContent=gdata.searchConsole.impressions.toLocaleString('id-ID');
-        document.getElementById('sc-ctr').textContent=(gdata.searchConsole.ctr*100).toFixed(2)+'%';
-      }
-      const notes=[];
-      if(!gdata.analytics?.ok) notes.push('GA4: '+(gdata.analytics?.message||gdata.analytics?.error||'belum tersedia'));
-      if(!gdata.searchConsole?.ok) notes.push('Search Console: '+(gdata.searchConsole?.error||'belum tersedia'));
-      document.getElementById('google-note').textContent=notes.join(' | ');
-    }
-    if(seo){
-      document.getElementById('seo-time').textContent='Audit: '+new Date(seo.checkedAt).toLocaleString('id-ID',{timeZone:'Asia/Jakarta'})+' WIB';
-      document.getElementById('seo-total').textContent=seo.totalPages;
-      document.getElementById('seo-problems').textContent=seo.pagesWithIssues;
-      document.getElementById('seo-issues').textContent=seo.totalIssues;
-      document.getElementById('seo-tech').textContent=Object.entries(seo.technical||{}).map(([k,v])=>k+': '+(v.ok?'OK':'Periksa')+(v.status?' (HTTP '+v.status+')':'')).join(' | ')||'Tidak ada data teknis';
-      document.getElementById('seo-pages').innerHTML=seo.pages.map(p=>'<tr><td><a href="'+p.url+'" target="_blank" rel="noopener">'+p.url+'</a></td><td class="'+(p.issues.length?'bad':'good')+'">'+(p.issues.length?p.issues.join('; '):'Tidak ada temuan otomatis')+'</td></tr>').join('');
-    }
-  }catch(e){document.getElementById('status').textContent='Menunggu pemeriksaan pertama';document.getElementById('time').textContent=e.message}
+const byId = id => document.getElementById(id);
+const fmt = value => Number(value ?? 0).toLocaleString('id-ID');
+const dateFmt = value => value ? new Date(value).toLocaleString('id-ID',{timeZone:'Asia/Jakarta'})+' WIB' : 'Belum tersedia';
+function cell(row,value,cls){const td=document.createElement('td');td.textContent=value??'—';if(cls)td.className=cls;row.appendChild(td);return td}
+function linkCell(row,url){const td=document.createElement('td');const a=document.createElement('a');a.href=url;a.textContent=url;a.target='_blank';a.rel='noopener';td.appendChild(a);row.appendChild(td)}
+function emptyRow(id,cols,msg){const row=document.createElement('tr');cell(row,msg);row.firstChild.colSpan=cols;byId(id).replaceChildren(row)}
+async function readJson(file){const response=await fetch('./'+file+'?t='+Date.now());if(!response.ok)throw new Error(file+' tidak tersedia (HTTP '+response.status+')');return response.json()}
+async function loadStatus(){
+ try{
+  const s=await readJson('status.json');
+  byId('status').textContent=s.status==='UP'?'● WEBSITE NORMAL':'● WEBSITE PERLU DIPERIKSA';
+  byId('status').className='status '+(s.status==='UP'?'good':'bad');
+  byId('time').textContent='Pemeriksaan terakhir: '+dateFmt(s.checkedAt);
+  byId('total').textContent=fmt(s.total);byId('ok').textContent=fmt(s.successful);byId('fail').textContent=fmt(s.failures);
+  const body=byId('pages');body.replaceChildren();
+  (s.pages||[]).forEach(p=>{const tr=document.createElement('tr');linkCell(tr,p.url);cell(tr,p.status);cell(tr,p.ok?'BERHASIL':'ERROR',p.ok?'good':'bad');body.appendChild(tr)});
+  if(!(s.pages||[]).length)emptyRow('pages',3,'Belum ada detail halaman');
+ }catch(e){byId('status').textContent='Data status belum tersedia';byId('status').className='status warn';byId('time').textContent=e.message}
 }
-load();
+async function loadGoogle(){
+ try{
+  const g=await readJson('google-data.json');byId('google-time').textContent='Pembaruan data: '+dateFmt(g.checkedAt);
+  if(g.analytics?.ok){
+   byId('ga-users').textContent=fmt(g.analytics.activeUsers);
+   byId('ga-sessions').textContent=fmt(g.analytics.sessions);
+   byId('ga-views').textContent=fmt(g.analytics.pageViews);
+   byId('ga-note').hidden=true;
+  }else{
+   byId('ga-note').hidden=false;
+   byId('ga-note').textContent='GA4 belum berhasil mengambil data: '+(g.analytics?.message||g.analytics?.error||'belum ada detail error');
+  }
+  if(g.searchConsole?.ok){
+   byId('sc-clicks').textContent=fmt(g.searchConsole.clicks);
+   byId('sc-impressions').textContent=fmt(g.searchConsole.impressions);
+   byId('sc-ctr').textContent=((Number(g.searchConsole.ctr)||0)*100).toFixed(2)+'%';
+   byId('sc-position').textContent=Number(g.searchConsole.averagePosition||0).toFixed(1);
+   byId('sc-note').textContent=g.searchConsole.period||'Data Search Console berhasil dibaca.';
+  }else{byId('sc-note').textContent='Search Console belum berhasil mengambil data: '+(g.searchConsole?.error||'belum ada detail error')}
+ }catch(e){byId('google-time').textContent=e.message;byId('ga-note').hidden=false;byId('ga-note').textContent=e.message;byId('sc-note').textContent=e.message}
+}
+async function loadSeo(){
+ try{
+  const s=await readJson('seo.json');byId('seo-time').textContent='Audit terakhir: '+dateFmt(s.checkedAt);
+  byId('seo-total').textContent=fmt(s.totalPages);byId('seo-problems').textContent=fmt(s.pagesWithIssues);byId('seo-issues').textContent=fmt(s.totalIssues);
+  byId('seo-tech').textContent=Object.entries(s.technical||{}).map(([k,v])=>k+': '+(v.ok?'OK':'Periksa')+(v.status?' (HTTP '+v.status+')':'')).join(' | ');
+  const body=byId('seo-pages');body.replaceChildren();
+  (s.pages||[]).forEach(p=>{const tr=document.createElement('tr');linkCell(tr,p.url);cell(tr,(p.issues||[]).join('; ')||'Tidak ada temuan otomatis',(p.issues||[]).length?'bad':'good');body.appendChild(tr)});
+  if(!(s.pages||[]).length)emptyRow('seo-pages',2,'Belum ada hasil audit');
+ }catch(e){byId('seo-time').textContent=e.message;emptyRow('seo-pages',2,'Data audit belum tersedia')}
+}
+async function loadHistory(){
+ try{
+  const h=await readJson('history.json');const body=byId('history');body.replaceChildren();
+  (h||[]).forEach(x=>{const tr=document.createElement('tr');cell(tr,dateFmt(x.checkedAt));cell(tr,x.status,x.status==='UP'?'good':'bad');cell(tr,fmt(x.total));cell(tr,fmt(x.failures));body.appendChild(tr)});
+  if(!(h||[]).length)emptyRow('history',4,'Belum ada riwayat');
+ }catch(e){emptyRow('history',4,e.message)}
+}
+Promise.all([loadStatus(),loadGoogle(),loadSeo(),loadHistory()]);
 </script>
-</body></html>
+</body>
+</html>
