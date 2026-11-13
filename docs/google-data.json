@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-11-13T12:45:41.615Z",
+  "checkedAt": "2026-11-13T12:49:15.352Z",
   "siteUrl": "https://ahlicuan99.blogspot.com/",
   "analytics": {
     "configured": true,
     "ok": false,
-    "error": "4 DEADLINE_EXCEEDED: Deadline exceeded after 60.011s,name resolution: 0.033s,time to current attempt start: 0.001s,LB pick: 0.475s,remote_addr=172.217.113.4:443"
+    "error": "4 DEADLINE_EXCEEDED: Deadline exceeded after 60.009s,name resolution: 0.026s,metadata filters: 0.001s,LB pick: 0.435s,remote_addr=172.217.119.4:443"
   },
   "searchConsole": {
     "configured": true,
