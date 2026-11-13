@@ -13,14 +13,21 @@ function dateDaysAgo(days) {
 }
 async function getGa4ReportWithRetry(client, request) {
   let lastError;
-  for (let attempt = 0; attempt < 3; attempt++) {
+  const maxAttempts = 5;
+  const delays = [10000, 20000, 40000, 60000];
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
     try {
-      const [response] = await client.runReport(request, { timeout: 90000 });
+      const [response] = await client.runReport(request, { timeout: 120000 });
       return response;
     } catch (error) {
       lastError = error;
-      console.error(`GA4 attempt ${attempt + 1}/3 failed:`, error.message);
-      if (attempt < 2) await sleep(10000 * (attempt + 1));
+      const message = error?.message || String(error);
+      console.error(`GA4 attempt ${attempt + 1}/${maxAttempts} failed:`, message);
+      if (attempt < maxAttempts - 1) {
+        const delay = delays[attempt] || 60000;
+        console.log(`Retrying GA4 in ${delay / 1000} seconds...`);
+        await sleep(delay);
+      }
     }
   }
   throw lastError;
