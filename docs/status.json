@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-11-13T05:46:15.434Z",
+  "checkedAt": "2026-11-13T06:49:53.206Z",
   "target": "https://ahlicuan99.blogspot.com/",
   "total": 5,
-  "successful": 3,
-  "failures": 2,
+  "successful": 4,
+  "failures": 1,
   "status": "ISSUES",
   "pages": [
     {
@@ -18,8 +18,8 @@
     },
     {
       "url": "https://ahlicuan99.blogspot.com/",
-      "status": 429,
-      "ok": false
+      "status": 200,
+      "ok": true
     },
     {
       "url": "https://ahlicuan99.blogspot.com/feeds/posts/default",
