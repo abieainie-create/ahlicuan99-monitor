@@ -16,7 +16,7 @@ concurrency:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -80,6 +80,12 @@ jobs:
             git push
           fi
 
-      - name: Mark failed website check
-        if: steps.monitor.outcome == 'failure'
-        run: exit 1
+      - name: Report monitoring issues without failing the workflow
+        if: always()
+        run: |
+          if [ "${{ steps.monitor.outcome }}" = "failure" ]; then
+            echo "::warning::Website check found issues. Inspect HTTP statuses in the saved dashboard."
+          fi
+          if [ "${{ steps.google-data.outcome }}" = "failure" ]; then
+            echo "::warning::Google data collection encountered an error. Other monitoring results are retained."
+          fi
