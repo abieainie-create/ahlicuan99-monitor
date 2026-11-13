@@ -1,14 +1,14 @@
 {
-  "checkedAt": "2026-11-13T01:55:21.326Z",
+  "checkedAt": "2026-11-13T02:35:11.620Z",
   "target": "https://ahlicuan99.blogspot.com/",
-  "totalPages": 2,
-  "pagesWithIssues": 2,
-  "totalIssues": 6,
+  "totalPages": 4,
+  "pagesWithIssues": 4,
+  "totalIssues": 12,
   "technical": {
     "robotsTxt": {
       "url": "https://ahlicuan99.blogspot.com/robots.txt",
-      "status": 200,
-      "ok": true
+      "status": 404,
+      "ok": false
     },
     "sitemapXml": {
       "url": "https://ahlicuan99.blogspot.com/sitemap.xml",
@@ -19,8 +19,24 @@
   "pages": [
     {
       "url": "https://ahlicuan99.blogspot.com/",
+      "httpStatus": 200,
+      "title": "ahlicuan",
+      "description": "",
+      "canonical": "https://ahlicuan99.blogspot.com/",
+      "h1Count": 1,
+      "images": 6,
+      "imagesMissingAlt": 4,
+      "robots": "",
+      "issues": [
+        "Meta description belum ada",
+        "4 gambar belum memiliki teks ALT"
+      ],
+      "ok": false
+    },
+    {
+      "url": "https://ahlicuan99.blogspot.com/2026/11/7-cara-menghasilkan-uang-dari-internet.html",
       "httpStatus": 429,
-      "title": "https://ahlicuan99.blogspot.com/",
+      "title": "https://ahlicuan99.blogspot.com/2026/11/7-cara-menghasilkan-uang-dari-internet.html",
       "description": "",
       "canonical": "",
       "h1Count": 0,
@@ -36,18 +52,36 @@
       "ok": false
     },
     {
-      "url": "https://www.google.com/policies/terms/",
+      "url": "https://ahlicuan99.blogspot.com/feeds/posts/default",
       "httpStatus": 200,
-      "title": "Google Terms of Service – Privacy & Terms – Google",
+      "title": "",
       "description": "",
-      "canonical": "https://policies.google.com/terms?hl=en-US",
-      "h1Count": 12,
-      "images": 15,
-      "imagesMissingAlt": 13,
+      "canonical": "",
+      "h1Count": 0,
+      "images": 0,
+      "imagesMissingAlt": 0,
+      "robots": "",
+      "issues": [
+        "Judul halaman kosong",
+        "Meta description belum ada",
+        "Canonical URL belum ditemukan",
+        "Tidak ditemukan heading H1"
+      ],
+      "ok": false
+    },
+    {
+      "url": "https://ahlicuan99.blogspot.com/2026/11/",
+      "httpStatus": 200,
+      "title": "ahlicuan: November 2026",
+      "description": "",
+      "canonical": "https://ahlicuan99.blogspot.com/2026/11/",
+      "h1Count": 1,
+      "images": 6,
+      "imagesMissingAlt": 4,
       "robots": "",
       "issues": [
         "Meta description belum ada",
-        "13 gambar belum memiliki teks ALT"
+        "4 gambar belum memiliki teks ALT"
       ],
       "ok": false
     }
