@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-11-14T16:27:30.145Z",
+  "checkedAt": "2026-11-14T17:25:10.276Z",
   "target": "https://ahlicuan99.blogspot.com/",
   "totalPages": 4,
   "pagesWithIssues": 4,
-  "totalIssues": 12,
+  "totalIssues": 14,
   "technical": {
     "robotsTxt": {
       "url": "https://ahlicuan99.blogspot.com/robots.txt",
@@ -35,17 +35,19 @@
     },
     {
       "url": "https://ahlicuan99.blogspot.com/2026/11/7-cara-menghasilkan-uang-dari-internet.html",
-      "httpStatus": 200,
-      "title": "ahlicuan: 7 Cara Menghasilkan Uang dari Internet Tahun 2027, Modal HP Bisa Mulai dari Rumah!",
+      "httpStatus": 429,
+      "title": "https://ahlicuan99.blogspot.com/2026/11/7-cara-menghasilkan-uang-dari-internet.html",
       "description": "",
-      "canonical": "https://ahlicuan99.blogspot.com/2026/11/7-cara-menghasilkan-uang-dari-internet.html",
-      "h1Count": 1,
-      "images": 6,
-      "imagesMissingAlt": 4,
+      "canonical": "",
+      "h1Count": 0,
+      "images": 0,
+      "imagesMissingAlt": 0,
       "robots": "",
       "issues": [
+        "Halaman tidak merespons normal",
         "Meta description belum ada",
-        "4 gambar belum memiliki teks ALT"
+        "Canonical URL belum ditemukan",
+        "Tidak ditemukan heading H1"
       ],
       "ok": false
     },
