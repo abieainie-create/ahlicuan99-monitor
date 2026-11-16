@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-16T20:39:57.711Z",
+  "checkedAt": "2026-11-16T21:38:41.939Z",
   "target": "https://ahlicuan99.blogspot.com/",
   "totalPages": 4,
   "pagesWithIssues": 4,
@@ -24,12 +24,30 @@
       "description": "",
       "canonical": "https://ahlicuan99.blogspot.com/",
       "h1Count": 1,
-      "images": 6,
-      "imagesMissingAlt": 4,
+      "images": 4,
+      "imagesMissingAlt": 3,
       "robots": "",
       "issues": [
         "Meta description belum ada",
-        "4 gambar belum memiliki teks ALT"
+        "3 gambar belum memiliki teks ALT"
+      ],
+      "ok": false
+    },
+    {
+      "url": "https://ahlicuan99.blogspot.com/2026/11/wawa.html",
+      "httpStatus": 429,
+      "title": "https://ahlicuan99.blogspot.com/2026/11/wawa.html",
+      "description": "",
+      "canonical": "",
+      "h1Count": 0,
+      "images": 0,
+      "imagesMissingAlt": 0,
+      "robots": "",
+      "issues": [
+        "Halaman tidak merespons normal",
+        "Meta description belum ada",
+        "Canonical URL belum ditemukan",
+        "Tidak ditemukan heading H1"
       ],
       "ok": false
     },
@@ -63,24 +81,6 @@
       "robots": "",
       "issues": [
         "Judul halaman kosong",
-        "Meta description belum ada",
-        "Canonical URL belum ditemukan",
-        "Tidak ditemukan heading H1"
-      ],
-      "ok": false
-    },
-    {
-      "url": "https://ahlicuan99.blogspot.com/2026/11/",
-      "httpStatus": 429,
-      "title": "https://ahlicuan99.blogspot.com/2026/11/",
-      "description": "",
-      "canonical": "",
-      "h1Count": 0,
-      "images": 0,
-      "imagesMissingAlt": 0,
-      "robots": "",
-      "issues": [
-        "Halaman tidak merespons normal",
         "Meta description belum ada",
         "Canonical URL belum ditemukan",
         "Tidak ditemukan heading H1"
