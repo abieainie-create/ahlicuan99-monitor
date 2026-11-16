@@ -1,18 +1,13 @@
 {
-  "checkedAt": "2026-11-16T21:38:14.104Z",
+  "checkedAt": "2026-11-16T22:35:17.882Z",
   "target": "https://ahlicuan99.blogspot.com/",
-  "total": 4,
-  "successful": 4,
+  "total": 3,
+  "successful": 3,
   "failures": 0,
   "status": "UP",
   "pages": [
     {
       "url": "https://ahlicuan99.blogspot.com/",
-      "status": 200,
-      "ok": true
-    },
-    {
-      "url": "https://ahlicuan99.blogspot.com/2026/11/wawa.html",
       "status": 200,
       "ok": true
     },
