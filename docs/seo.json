@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-17T10:50:46.437Z",
+  "checkedAt": "2026-11-17T11:38:31.463Z",
   "target": "https://ahlicuan99.blogspot.com/",
   "totalPages": 3,
   "pagesWithIssues": 3,
@@ -7,8 +7,8 @@
   "technical": {
     "robotsTxt": {
       "url": "https://ahlicuan99.blogspot.com/robots.txt",
-      "status": 404,
-      "ok": false
+      "status": 200,
+      "ok": true
     },
     "sitemapXml": {
       "url": "https://ahlicuan99.blogspot.com/sitemap.xml",
