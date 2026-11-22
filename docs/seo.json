@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-11-21T23:27:32.034Z",
+  "checkedAt": "2026-11-22T00:30:38.618Z",
   "target": "https://ahlicuan99.blogspot.com/",
   "totalPages": 3,
   "pagesWithIssues": 3,
-  "totalIssues": 7,
+  "totalIssues": 8,
   "technical": {
     "robotsTxt": {
       "url": "https://ahlicuan99.blogspot.com/robots.txt",
@@ -35,9 +35,17 @@
     },
     {
       "url": "https://ahlicuan99.blogspot.com/2026/11/7-cara-menghasilkan-uang-dari-internet.html",
-      "httpStatus": null,
+      "httpStatus": 200,
+      "title": "ahlicuan: 7 Cara Menghasilkan Uang dari Internet Tahun 2027, Modal HP Bisa Mulai dari Rumah!",
+      "description": "",
+      "canonical": "https://ahlicuan99.blogspot.com/2026/11/7-cara-menghasilkan-uang-dari-internet.html",
+      "h1Count": 1,
+      "images": 3,
+      "imagesMissingAlt": 2,
+      "robots": "",
       "issues": [
-        "Gagal memeriksa: page.goto: net::ERR_ABORTED at https://ahlicuan99.blogspot.com/2026/11/7-cara-menghasilkan-uang-dari-internet.html\nCall log:\n  - navigating to \"https://ahlicuan99.blogspot.com/2026/11/7-cara-menghasilkan-uang-dari-internet.html\", waiting until \"domcontentloaded\"\n"
+        "Meta description belum ada",
+        "2 gambar belum memiliki teks ALT"
       ],
       "ok": false
     },
