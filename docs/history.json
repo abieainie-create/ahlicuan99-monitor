@@ -1,5 +1,12 @@
 [
   {
+    "checkedAt": "2026-11-25T19:43:11.521Z",
+    "status": "UP",
+    "total": 3,
+    "successful": 3,
+    "failures": 0
+  },
+  {
     "checkedAt": "2026-11-25T18:37:23.476Z",
     "status": "UP",
     "total": 3,
@@ -1166,13 +1173,6 @@
     "status": "ISSUES",
     "total": 1,
     "successful": 0,
-    "failures": 1
-  },
-  {
-    "checkedAt": "2026-11-18T02:05:02.657Z",
-    "status": "ISSUES",
-    "total": 3,
-    "successful": 2,
     "failures": 1
   }
 ]
