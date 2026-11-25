@@ -1,14 +1,14 @@
 {
-  "checkedAt": "2026-11-25T05:47:03.337Z",
+  "checkedAt": "2026-11-25T06:53:23.314Z",
   "target": "https://ahlicuan99.blogspot.com/",
   "totalPages": 3,
   "pagesWithIssues": 3,
-  "totalIssues": 7,
+  "totalIssues": 8,
   "technical": {
     "robotsTxt": {
       "url": "https://ahlicuan99.blogspot.com/robots.txt",
-      "status": 404,
-      "ok": false
+      "status": 200,
+      "ok": true
     },
     "sitemapXml": {
       "url": "https://ahlicuan99.blogspot.com/sitemap.xml",
@@ -35,9 +35,17 @@
     },
     {
       "url": "https://ahlicuan99.blogspot.com/2026/11/7-cara-menghasilkan-uang-dari-internet.html",
-      "httpStatus": null,
+      "httpStatus": 200,
+      "title": "ahlicuan: 7 Cara Menghasilkan Uang dari Internet Tahun 2027, Modal HP Bisa Mulai dari Rumah!",
+      "description": "",
+      "canonical": "https://ahlicuan99.blogspot.com/2026/11/7-cara-menghasilkan-uang-dari-internet.html",
+      "h1Count": 1,
+      "images": 6,
+      "imagesMissingAlt": 5,
+      "robots": "",
       "issues": [
-        "Gagal memeriksa: page.evaluate: Execution context was destroyed, most likely because of a navigation"
+        "Meta description belum ada",
+        "5 gambar belum memiliki teks ALT"
       ],
       "ok": false
     },
