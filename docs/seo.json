@@ -1,9 +1,9 @@
 {
-  "checkedAt": "2026-11-28T08:04:23.833Z",
+  "checkedAt": "2026-11-28T09:40:34.187Z",
   "target": "https://ahlicuan99.blogspot.com/",
   "totalPages": 3,
   "pagesWithIssues": 3,
-  "totalIssues": 10,
+  "totalIssues": 7,
   "technical": {
     "robotsTxt": {
       "url": "https://ahlicuan99.blogspot.com/robots.txt",
@@ -35,19 +35,9 @@
     },
     {
       "url": "https://ahlicuan99.blogspot.com/2026/11/7-cara-menghasilkan-uang-dari-internet.html",
-      "httpStatus": 429,
-      "title": "https://ahlicuan99.blogspot.com/2026/11/7-cara-menghasilkan-uang-dari-internet.html",
-      "description": "",
-      "canonical": "",
-      "h1Count": 0,
-      "images": 0,
-      "imagesMissingAlt": 0,
-      "robots": "",
+      "httpStatus": null,
       "issues": [
-        "Halaman tidak merespons normal",
-        "Meta description belum ada",
-        "Canonical URL belum ditemukan",
-        "Tidak ditemukan heading H1"
+        "Gagal memeriksa: page.goto: net::ERR_ABORTED at https://ahlicuan99.blogspot.com/2026/11/7-cara-menghasilkan-uang-dari-internet.html\nCall log:\n  - navigating to \"https://ahlicuan99.blogspot.com/2026/11/7-cara-menghasilkan-uang-dari-internet.html\", waiting until \"domcontentloaded\"\n"
       ],
       "ok": false
     },
